@@ -1,3 +1,9 @@
+---
+import '@style'; 
+
+import Navigation from '@partials/Navigation.astro';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,18 +11,42 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>View Transition Navigation Menu</title>
 	</head>
-	<body>
-		<slot />
+	<body class="p-4 md:p-12 max-w-[800px] mx-auto bg-white text-black">
+		<Navigation />
+		<main class="grid space-y-6">
+			<slot />
+		</main>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+<style is:global>
+	main {
+		view-transition-name: main;
+	}
+
+	::view-transition-old(main) {
+		animation: slide 300ms ease-in-out forwards;
+	}
+
+	::view-transition-new(main) {
+		animation: slide 300ms ease-in-out reverse;
+	}
+
+	@keyframes slide {
+		0% {
+			transform: translateX(0);
+			filter: blur(0);
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(10px);
+			filter: blur(5px);
+			opacity: 0;
+		}
 	}
 </style>

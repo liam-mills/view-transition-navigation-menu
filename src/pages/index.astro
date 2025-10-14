@@ -1,11 +1,11 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Link from '@components/Link.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<h1 class="font-semibold text-xl">View Transition Navigation Menu</h1>
+	<p>This is a demo using View Transitions to transition a CSS pseudo element attached to the active navigation menu item.</p>
+	<p>You'll notice that on this current (home) page, there is no active state visible in the navigation bar. Try going to the <Link href="/about/">about</Link> or <Link href="/projects/">projects</Link> page to see the navigation menu styling update.</p>
 </Layout>

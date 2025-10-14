@@ -1,0 +1,59 @@
+---
+const links = [
+    {
+        'path': '/about/',
+        'label': 'About'
+    },
+    {
+        'path': '/projects/',
+        'label': 'Projects'
+    },
+    {
+        'path': '/extensions/',
+        'label': 'Extensions'
+    }
+]
+---
+
+<div class="flex flex-wrap gap-x-6 gap-y-2 justify-between items-center mb-12">
+    <p><a href="/" class="py-1">View Transitions Demo</a></p>
+    <nav class="flex gap-x-3">
+        {links.map((link) => {
+            const classList = [
+                {'active text-black': Astro.url.pathname === link.path},
+                {'text-grey': Astro.url.pathname !== link.path},
+                'hover:text-black focus-visible:text-black transition-colors py-1'
+            ];
+            return <a href={link.path} class:list={classList}>{link.label}</a>
+        })}
+    </nav>
+</div>
+
+<style is:global>
+    @reference '@style';
+
+    nav a {
+        position: relative;
+    }
+    nav a.active::before {
+        view-transition-name: active-nav;
+        content: '';
+        @apply absolute inset-0 border-b pointer-events-none;
+        transition: left 200ms ease-in-out, right 200ms ease-in-out;
+    }
+    nav a.active:has(~ a:hover)::before {
+        @apply -right-1 left-[2px];
+    }
+    nav a:hover ~ a.active::before {
+        @apply right-[2px] -left-1;
+    }
+
+    ::view-transition-old(active-nav),
+    ::view-transition-new(active-nav) {
+        height: 100%;
+    }
+    ::view-transition-group(active-nav) {
+        animation-duration: 300ms;
+        animation-timing-function: cubic-bezier(.47,1.64,.41,.8);
+    }
+</style>
