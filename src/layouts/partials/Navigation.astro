@@ -12,15 +12,11 @@ const links = [
         'path': '/extensions/',
         'label': 'Extensions'
     }
-]
-
-console.log(Astro.url.pathname);
-
-
+];
 ---
 
 <div class="flex flex-wrap gap-x-6 gap-y-2 justify-between items-center mb-12">
-    <p><a href={import.meta.env.BASE_URL} class="py-1">View Transitions Demo</a></p>
+    <p><a href={import.meta.env.BASE_URL} class="py-1 text-grey hover:text-black focus-visible:text-black transition-colors">View Transitions Demo</a></p>
     <nav class="flex gap-x-3">
         {links.map((link) => {
             const baseUrl = `${import.meta.env.BASE_URL}${link.path}`;

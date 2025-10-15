@@ -15,8 +15,9 @@ import Navigation from '@partials/Navigation.astro';
 	</head>
 	<body class="p-4 md:p-12 max-w-[800px] mx-auto bg-white text-black">
 		<Navigation />
-		<main class="grid space-y-6">
+		<main class="flex flex-col items-start space-y-6">
 			<slot />
+			<p class="italic mt-12 text-sm px-2 py-1 bg-blue text-white rounded-lg" style="view-transition-name: persistent;">This element will persist across pages.</p>
 		</main>
 	</body>
 </html>
