@@ -15,7 +15,7 @@ const links = [
 ];
 ---
 
-<div class="flex flex-wrap gap-x-6 gap-y-2 justify-between items-center mb-12">
+<div class="flex flex-wrap gap-x-6 gap-y-2 justify-between items-center mb-12" style="view-transition-name: navigation;">
     <p><a href={import.meta.env.BASE_URL} class="py-1 text-grey hover:text-black focus-visible:text-black transition-colors">View Transitions Demo</a></p>
     <nav class="flex gap-x-3">
         {links.map((link) => {
@@ -25,7 +25,7 @@ const links = [
                 {'text-grey': Astro.url.pathname !== baseUrl},
                 'hover:text-black focus-visible:text-black transition-colors py-1'
             ];
-            return <a href={`${import.meta.env.BASE_URL}${link.path}`} class:list={classList}>{link.label}</a>
+            return <a href={`${import.meta.env.BASE_URL}${link.path}`} class:list={classList} data-label={link.label}>{link.label}</a>
         })}
     </nav>
 </div>

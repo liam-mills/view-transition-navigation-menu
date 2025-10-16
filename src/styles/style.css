@@ -14,3 +14,9 @@
 ::selection {
     @apply bg-blue text-white;
 }
+
+:root {
+    scrollbar-gutter: stable both-edges;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-black) transparent;
+}
